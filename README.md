@@ -1,3 +1,3 @@
-# morphology
+# radicle
 
 stemmer in madlib

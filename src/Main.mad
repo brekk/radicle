@@ -10,5 +10,5 @@ main = () => {
     IO.pTrace("Stemmer:"),
     tokenize(true),
     IO.pTrace("Main file for:"),
-  )("morphology")
+  )("xenomorph")
 }
