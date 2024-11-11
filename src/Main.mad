@@ -1,0 +1,14 @@
+import IO from "IO"
+
+import { Stemmer, tokenize } from "@/Stemmer"
+
+
+
+main = () => {
+  pipe(
+    Stemmer([]),
+    IO.pTrace("Stemmer:"),
+    tokenize(true),
+    IO.pTrace("Main file for:"),
+  )("morphology")
+}

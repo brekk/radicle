@@ -1,0 +1,28 @@
+import { equals } from "Function"
+import { filter } from "List"
+import { isEmpty, split } from "String"
+
+
+
+// type Tokenizer = Tokenizer(String)
+/*
+interface Tokenizable a {
+  tokenize :: a -> List a
+  trim :: List a -> List a
+}
+
+instance Tokenizable String {
+  tokenize = aggroTokenize
+  trim = trimStrings
+}
+*/
+
+aggroTokenize :: String -> List String
+export aggroTokenize = pipe(
+  split("[^a-zA-Z0-9'\-/]+"),
+)
+
+trimStrings :: List String -> List String
+export trimStrings = pipe(
+  filter(isEmpty),
+)

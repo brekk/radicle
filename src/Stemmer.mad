@@ -1,0 +1,25 @@
+import { always, both, equals, ifElse, unless } from "Function"
+import { includes, reject } from "List"
+import String from "String"
+
+import { aggroTokenize, trimStrings } from "@/Tokenizer"
+
+
+
+export type Stemmer
+  = Stemmer(
+    // stopwords
+    List String,
+    // text
+    String,
+  )
+
+tokenize :: Boolean -> Stemmer -> List String
+export tokenize = (keepStops, stem) => where(stem) {
+  Stemmer(stopwords, input) =>
+    pipe(
+      aggroTokenize,
+      trimStrings,
+      (trimmed) => keepStops ? trimmed : reject(includes($, stopwords), trimmed),
+    )(input)
+}

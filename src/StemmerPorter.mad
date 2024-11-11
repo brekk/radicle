@@ -1,0 +1,34 @@
+import { always, ifElse } from "Function"
+import { toFloat } from "Integer"
+import { divide } from "Math"
+import { isEmpty, length, replace } from "String"
+
+
+
+categorizeGroups :: String -> String
+export categorizeGroups = pipe(
+  replace("[^aeiouy]+y", "CV"),
+  replace("[aeiou]+", "V"),
+  replace("[^V]+", "C"),
+)
+
+categorizeChars :: String -> String
+export categorizeChars = pipe(
+  replace("[^aeiouy]y", "CV"),
+  replace("[aeiou]", "V"),
+  replace("[^V]", "C"),
+)
+
+measure :: String -> Float
+export measure = ifElse(
+  isEmpty,
+  always(-1),
+  pipe(
+    categorizeGroups,
+    replace("^C", ""),
+    replace("S$", ""),
+    length,
+    toFloat,
+    divide($, 2.0),
+  ),
+)
