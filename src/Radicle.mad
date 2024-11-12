@@ -1,0 +1,49 @@
+import { ifElse } from "Function"
+import { reduce } from "List"
+import { includes, toList, toLower } from "String"
+
+import { CONSONANTS, SPECIAL_VOWELS, VOWELS } from "@/Constants"
+
+
+
+export isConsonant = includes($, CONSONANTS)
+export isVowel = includes($, VOWELS)
+export isSpecialVowel = includes($, SPECIAL_VOWELS)
+
+export type Phoneme = Consonant | Vowel
+
+toPhoneme :: Char -> Phoneme
+export toPhoneme = ifElse(isConsonant, () => Consonant, () => Vowel)
+samePhoneme :: Phoneme -> Phoneme -> Boolean
+export samePhoneme = (a, b) => where(#[a, b]) {
+  #[Consonant, Consonant] =>
+    true
+
+  #[Vowel, Vowel] =>
+    true
+
+  #[_, _] =>
+    false
+}
+
+sameCharPhoneme :: Char -> Char -> Boolean
+export sameCharPhoneme = (a, b) => samePhoneme(toPhoneme(a), toPhoneme(b))
+
+// (char) => if (compareChar(
+divvy = pipe(
+  reduce(
+    (agg, word) => where(agg) {
+      { groups, prior } =>
+        do {
+          return if (prior == "") {
+            { groups, prior }
+          } else {
+            { groups, prior }
+          }
+        }
+    },
+    { groups: [], prior: "" },
+  ),
+)
+
+stemmer = (_consonants, _vowels, _special) => {}

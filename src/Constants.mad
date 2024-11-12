@@ -1,3 +1,11 @@
+import { toList } from "String"
+
+
+
+export CONSONANTS = "bcdfghjklmnpqrstwxz"
+export VOWELS = "aeiou"
+export SPECIAL_VOWELS = "y"
+
 // https://github.com/NaturalNode/natural/blob/master/lib/natural/util/stopwords.js
 
 export STOPWORDS = [
